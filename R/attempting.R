@@ -39,6 +39,10 @@ idx <- which(gsub("_NOMe-seq", "", gsub("_RNA-seq", "", sampnames)) %in% colname
 coldata <- as.data.frame(gds$`GSE109262-GPL13112_series_matrix.txt.gz`)[idx,]
 
 duplicated(gsub("_NOMe-seq", "", gsub("_RNA-seq", "", coldata$title)))
+
+## to build the colData check better the gds of GEO
+
+
 scc <- SingleCellExperiment(assays=list(counts=as.matrix(cc)), rowRanges=rowranges)#, colData=coldata)
 
 mae <- MultiAssayExperiment::MultiAssayExperiment(experiments=list(sce1=scc,sce2=scc))
