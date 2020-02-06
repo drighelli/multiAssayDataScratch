@@ -1,0 +1,168 @@
+---
+title: "Bioconductor Experiment Classes Cheatsheet"
+author: "Dario Righelli"
+date: "2/6/2020"
+header-includes:
+   - \usepackage{arydshln}
+output: pdf_document
+---
+
+# General 
+
+The aim of this file is to provide a schematic organization of the "Bioconductor
+Experiment" classes in terms of attributes and methods describing them.
+
+
+# The SummarizedExperiment Class
+
+The SummarizedExperiment object is defined in Bioconductor since BioC version 
+3.2 (R-3.2).
+It's aim is to flexibly easily provide an instrument for sequencing and 
+microarray data experiments handling.
+
+## SummarizedExperiment Refs 
+
+1. http://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html
+
+2. https://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html
+
+
+
+## SummarizedExperiment Cheatsheet
+
+\begin{tabular}{lll}
+\hline
+Attribute & Class & Description \\ \hline
+assays & list & list of named data matrices \\
+colData & DataFrame & describes samples (columns) units \\
+rowData & DataFrame & describes features (rows) units \\
+\hdashline
+Other attribute & Class & Description \\
+\hdashline
+elementMetadata & DataFrame & describes additional information on the experiment \\
+metadata & list & list of elementMetadata\\
+NAMES & character\_OR\_NULL & NOT CLEAR \\
+
+\hline 
+Method & Output & Description \\
+\hline
+SummarizedExperiment & SummarizedExperiment & constructor \\ 
+assays & list & gets/sets a list of assays \\
+assay & matrix & gets/sets the first assay \\
+rowData & DataFrame & gets/sets the rowData structure \\
+colData & DataFrame & gets/sets the colData structure \\
+\lbrack & SummarizedExperiment & subsets the object like a matrix/DataFrame\\
+\$ & DataFrame & operates on the colData columns\\
+\end{tabular}
+
+
+# The RangedSummarizedExperiment Class
+
+The RagnedSummarizedExperiment class extends the SummarizedExperiment class and 
+is defined in Bioconductor since BioC version 3.2 (R-3.2).
+It's aim is to provide a more flexible representation of the features in terms 
+of GenomicRanges coordinates.
+
+
+## RangedSummarizedExperiment Refs 
+
+1. http://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html
+
+2. https://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html
+
+
+## RangedSummarizedExperiment Cheatsheet
+
+\begin{tabular}{lll}
+\hline
+Attribute & Class & Description \\ \hline
+rowRanges & GenomicRanges & describe feature units in terms of 
+genomic coordinates \\
+\hline 
+Method & Output & Description \\
+\hline
+SummarizedExperiment & RangedSummarizedExperiment & constructor 
+(give rowRanges)\\ 
+RangedSummarizedExperiment & RangedSummarizedExperiment & constructor \\ 
+rowRanges & GenomicRanges & gets/sets the rowRanges structure \\
+subsetByOverlaps & RangedSummarizedExperiment & subsets the object only with 
+the overlapped ranges\\
+\end{tabular}
+
+
+# The SingleCellExperiment Class
+
+The SingleCellExperiment object is defined in Bioconductor since BioC version 
+3.6 (R-3.4) extending the RangedSummarizedExperiment Bioconductor object.
+
+For simplicity, exception made when necessary, inherited attributes or methods
+are not reported.
+
+## SingleCellExperiment Refs
+
+1. http://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html
+
+2. https://bioconductor.org/packages/release/bioc/vignettes/SingleCellExperiment/inst/doc/intro.html
+
+## SingleCellExperiment Cheatsheet
+
+\begin{tabular}{lll}
+\hline
+Attribute & Class & Description \\ \hline
+assays & list & list of named data matrices \\
+colData & DataFrame & describes samples (columns) units \\
+rowData & DataFrame & describes features (rows) units \\
+rowRanges & GenomicRanges & describe feature units in terms of 
+genomic coordinates \\
+int\_colData & DataFrame & as colData, but internal (not for direct access) \\
+reducedDims & SimpleList & list of matrices representing reduced dimentions 
+of data \\
+\hdashline
+Other attribute & Class & Description \\
+\hdashline
+elementMetadata & DataFrame & describes additional information on the experiment \\
+metadata & list & list of elementMetadata\\
+int\_metadata & list & see metadata, but internal (not for direct access) \\
+int\_elementMetadata & DataFrame & see elementMetadata, but internal 
+(not for direct access) \\
+NAMES & character\_OR\_NULL & NOT CLEAR \\
+\hline 
+Method & Output & Description \\
+\hline
+SingleCellExperiment & SingleCellExperiment & constructor \\ 
+isSpike & logical & gets/sets rows corresponding to spike-in transcripts \\ 
+spikeNames & character & the spike-ins in the object \\ 
+sizeFactors & numeric & gets/sets the factors (columns) size (based on reads 
+amount) \\
+clearSizeFactors & SingleCellExperiment & clears size factors and returns the 
+new SingleCellExperiment object \\
+sizeFactorNames & character & gets/sets the names of the sizeFacors 
+(if present) \\
+colData & DataFrame & gets/sets the colData structure \\
+rowData & DataFrame & gets/sets the rowData structure \\
+rowRanges & GenomicRanges & gets/sets the rowRanges structure \\
+reducedDim & matrix & gets/sets one element of reducedDims list \\ 
+reducedDims & list & gets/sets the reducedDims list \\ 
+reducedDimNames & character & gets/sets the reducedDims list names \\
+
+\end{tabular}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
