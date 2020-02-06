@@ -5,6 +5,8 @@ date: "2/6/2020"
 header-includes:
    - \usepackage{arydshln}
 output: pdf_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 # General 
@@ -19,6 +21,8 @@ The SummarizedExperiment object is defined in Bioconductor since BioC version
 3.2 (R-3.2).
 It's aim is to flexibly easily provide an instrument for sequencing and 
 microarray data experiments handling.
+
+![The SummarizedExperiment Representation](imgs/se.png)
 
 ## SummarizedExperiment Refs 
 
@@ -76,8 +80,7 @@ of GenomicRanges coordinates.
 \begin{tabular}{lll}
 \hline
 Attribute & Class & Description \\ \hline
-rowRanges & GenomicRanges & describe feature units in terms of 
-genomic coordinates \\
+rowRanges & GenomicRanges & describes features as genomic coordinates \\
 \hline 
 Method & Output & Description \\
 \hline
@@ -85,8 +88,8 @@ SummarizedExperiment & RangedSummarizedExperiment & constructor
 (give rowRanges)\\ 
 RangedSummarizedExperiment & RangedSummarizedExperiment & constructor \\ 
 rowRanges & GenomicRanges & gets/sets the rowRanges structure \\
-subsetByOverlaps & RangedSummarizedExperiment & subsets the object only with 
-the overlapped ranges\\
+subsetByOverlaps & RangedSummarizedExperiment & subsets the object with 
+overlapped ranges\\
 \end{tabular}
 
 
@@ -97,6 +100,8 @@ The SingleCellExperiment object is defined in Bioconductor since BioC version
 
 For simplicity, exception made when necessary, inherited attributes or methods
 are not reported.
+
+![The SingleCellExperiment Representation](imgs/sceosca.jpg)
 
 ## SingleCellExperiment Refs
 
@@ -112,8 +117,7 @@ Attribute & Class & Description \\ \hline
 assays & list & list of named data matrices \\
 colData & DataFrame & describes samples (columns) units \\
 rowData & DataFrame & describes features (rows) units \\
-rowRanges & GenomicRanges & describe feature units in terms of 
-genomic coordinates \\
+rowRanges & GenomicRanges & describes features as genomic coordinates \\
 int\_colData & DataFrame & as colData, but internal (not for direct access) \\
 reducedDims & SimpleList & list of matrices representing reduced dimentions 
 of data \\
